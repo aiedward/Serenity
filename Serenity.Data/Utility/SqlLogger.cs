@@ -6,7 +6,9 @@ using Serenity.Data;
 using System;
 using System.Collections.Generic;
 using System.Threading;
-
+#if PORTABLE
+using Dapper;
+#endif
 namespace Serenity.Logging
 {
     public class SqlLogger : ILogger, IDisposable

@@ -13,7 +13,7 @@ namespace Serenity.CodeGeneration
         {
             bool anyMetadata = false;
             var codeNamespace = GetNamespace(rowType);
-            Row row = (Row)rowType.GetInstance();
+            Row row = (Row)Activator.CreateInstance(rowType);
 
             var idRow = row as IIdRow;
             var isActiveRow = row as IIsActiveRow;

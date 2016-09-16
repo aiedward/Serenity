@@ -72,7 +72,7 @@
 
                 foreach (var navItemType in ExtensibilityHelper.GetTypesWithInterface(typeof(INavigationItemSource)))
                 {
-                    var navItem = (INavigationItemSource)navItemType.GetInstance();
+                    var navItem = (INavigationItemSource)Activator.CreateInstance(navItemType);
                     foreach (var item in navItem.GetItems())
                     {
                         if (filter == null || filter(item))

@@ -46,7 +46,7 @@ namespace Serenity.Web
             var items = Serenity.PropertyGrid.PropertyItemHelper.GetPropertyItemsFor(type);
             if (typeof(ICustomizedFormScript).IsAssignableFrom(type))
             {
-                var instance = InstanceCreator.GetInstance(type) as ICustomizedFormScript;
+                var instance = Activator.CreateInstance(type) as ICustomizedFormScript;
                 instance.Customize(items);
             }
 

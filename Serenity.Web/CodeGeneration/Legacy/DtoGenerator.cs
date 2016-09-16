@@ -212,7 +212,7 @@ namespace Serenity.CodeGeneration
 
         private void GenerateRowMembers(Type rowType)
         {
-            Row row = (Row)rowType.GetInstance();
+            Row row = (Row)Activator.CreateInstance(rowType);
             foreach (var field in row.GetFields())
             {
                 cw.Indented("public ");

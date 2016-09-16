@@ -1,0 +1,31 @@
+{
+  "version": "1.0.0-*",
+
+    "dependencies": {
+        "NETStandard.Library": "1.6.0",
+        "System.Data.Common": "4.1.0",
+        "Newtonsoft.Json": "9.0.1",
+        "Serenity.Core": "1.0.0-*",
+        "System.Data.SqlClient": "4.1.0",
+        "Microsoft.Extensions.Configuration.Abstractions": "1.0.0",
+        "System.Threading.Thread": "4.0.0",
+        "Dapper": "1.50.2"
+    },
+
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": "dnxcore50",
+      "buildOptions": {
+        "define": [ "PORTABLE", "NETSTANDARD1_6" ]
+      }
+    }
+  },
+
+  "buildOptions": {
+    "compile": {
+      "excludeFiles": [
+      ]
+    }
+  }
+
+}
