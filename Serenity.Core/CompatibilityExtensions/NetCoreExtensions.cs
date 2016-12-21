@@ -1,4 +1,4 @@
-﻿#if PORTABLE
+﻿#if COREFX
 using Microsoft.Extensions.DependencyModel;
 using System;
 using System.Collections.Generic;
@@ -9,6 +9,11 @@ namespace System
 {
     public static class NetCoreExtensions
     {
+        public static Assembly GetAssembly(this Type type)
+        {
+            return type.GetTypeInfo().Assembly;
+        }
+
         public static TAttribute GetCustomAttribute<TAttribute>(this Type type, bool inherit = true)
             where TAttribute: System.Attribute
         {

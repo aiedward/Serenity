@@ -50,7 +50,7 @@ namespace Serenity.Logging
                 {
                     file = value;
 
-#if PORTABLE
+#if COREFX
                     string baseDirectory = AppContext.BaseDirectory;
 #else
                     string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;

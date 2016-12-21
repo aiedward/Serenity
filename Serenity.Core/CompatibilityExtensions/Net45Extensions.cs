@@ -1,8 +1,13 @@
-﻿#if !PORTABLE
+﻿#if !COREFX
 namespace System
 {
     public static class CompatibilityExtensions
     {
+        public static Assembly GetAssembly(this Type type)
+        {
+            return type.Assembly;
+        }
+
         public static bool GetIsEnum(this Type type)
         {
             return type.IsEnum;

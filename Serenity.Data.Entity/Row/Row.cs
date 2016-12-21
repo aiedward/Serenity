@@ -9,7 +9,7 @@ namespace Serenity.Data
     [JsonConverter(typeof(JsonRowConverter))]
     public abstract partial class Row : IEntityWithJoins, 
         INotifyPropertyChanged, IEditableObject
-#if !PORTABLE
+#if !COREFX
         , IDataErrorInfo
 #endif
     {

@@ -82,7 +82,7 @@ namespace Serenity.Data
                     }
 
                     if (_newById.Contains(id.Value))
-#if PORTABLE
+#if COREFX
                         throw new ArgumentException("newItemId");
 #else
                         throw new DuplicateNameException("newItemId");

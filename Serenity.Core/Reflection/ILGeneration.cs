@@ -8,7 +8,7 @@ namespace Serenity.Reflection
     {
         public static Func<object, object> GenerateGetter(FieldInfo fieldInfo)
         {
-#if PORTABLE
+#if COREFX
             return x => fieldInfo.GetValue(x);
 #else
             // create a method without a name, object as result type and one parameter of type object
@@ -31,7 +31,7 @@ namespace Serenity.Reflection
 
         public static Action<object, object> GenerateSetter(FieldInfo fieldInfo)
         {
-#if PORTABLE
+#if COREFX
             return (x, v) => fieldInfo.SetValue(x, v);
 #else
             var method = new DynamicMethod(string.Empty, null, new[] { typeof(object), typeof(object) }, fieldInfo.DeclaringType, true);

@@ -45,7 +45,7 @@ namespace Serenity.Extensibility
                 assembly.GetReferencedAssemblies().Any(a => a.Name.Contains("Serenity"));
         }
 
-#if !PORTABLE
+#if !COREFX
         private static void EnumerateDirectory(Dictionary<string, Assembly> assemblies, string path)
         {
             foreach (var filename in Directory.GetFiles(path, "*.dll"))
@@ -94,7 +94,7 @@ namespace Serenity.Extensibility
                 }
             }
 
-#if !PORTABLE
+#if !COREFX
             var asmPath = Path.GetDirectoryName(typeof(ExtensibilityHelper).Assembly.Location);
             EnumerateDirectory(assemblies, asmPath);
 #endif

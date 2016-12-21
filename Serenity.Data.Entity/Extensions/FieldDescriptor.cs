@@ -83,7 +83,7 @@ namespace Serenity.Data
         {
             get
             {
-#if !PORTABLE
+#if !COREFX
                 if (typeof(IList).IsAssignableFrom(this.PropertyType))
                 {
                     Attribute[] array = new Attribute[base.Attributes.Count + 1];

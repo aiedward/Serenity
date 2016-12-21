@@ -250,7 +250,7 @@ namespace Serenity.Data
             if (typeOriginal.GetIsGenericType()
                 && typeOriginal.GetGenericTypeDefinition() == typeof(Nullable<>))
             {
-#if PORTABLE
+#if COREFX
                 return (value as dynamic).GetValueOrDefault();
 #else
                 // generic value, unboxing needed

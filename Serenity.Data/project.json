@@ -16,7 +16,7 @@
     "netstandard1.6": {
       "imports": "dnxcore50",
       "buildOptions": {
-        "define": [ "PORTABLE", "NETSTANDARD1_6" ]
+        "define": [ "COREFX", "NETSTANDARD1_6" ]
       }
     }
   },

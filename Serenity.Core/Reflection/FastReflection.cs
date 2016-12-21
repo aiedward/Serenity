@@ -13,7 +13,7 @@ namespace Serenity.Reflection
 
         public static Func<TReturn> DelegateForConstructor<TReturn>(Type type)
         {
-#if PORTABLE
+#if COREFX
             var constructor = type.GetTypeInfo().GetConstructor(Type.EmptyTypes);
             if (constructor == null)
                 throw new ArgumentOutOfRangeException("type");

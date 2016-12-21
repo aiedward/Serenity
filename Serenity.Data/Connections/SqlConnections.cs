@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Reflection;
-#if !PORTABLE
+#if !COREFX
 using System.Configuration;
 #else
 using Microsoft.Extensions.Configuration;
@@ -11,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Serenity.Data
 {
-#if PORTABLE
+#if COREFX
     public static class DbProviderFactories
     {
         internal static readonly Dictionary<string, Func<DbProviderFactory>> _configs = new Dictionary<string, Func<DbProviderFactory>>();
@@ -35,7 +35,7 @@ namespace Serenity.Data
     {
         private static Dictionary<string, ConnectionStringInfo> connections = new Dictionary<string, ConnectionStringInfo>();
         private static Dictionary<string, DbProviderFactory> factories = new Dictionary<string, DbProviderFactory>();
-#if PORTABLE
+#if COREFX
         public static IConfigurationRoot Configuration { get; private set; }
 #endif
 
@@ -59,7 +59,7 @@ namespace Serenity.Data
             if (!connections.TryGetValue(connectionKey, out connection))
             {
                 var newConnections = new Dictionary<string, ConnectionStringInfo>(connections);
-#if PORTABLE
+#if COREFX
                 var connectionSetting = Configuration.GetSection("Data:" + connectionKey);
                 var providerName = connectionSetting["ProviderName"] ?? "System.Data.SqlClient";
                 var factory = GetFactory(providerName);

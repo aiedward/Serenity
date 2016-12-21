@@ -1,4 +1,4 @@
-﻿#if !PORTABLE
+﻿#if !COREFX
 using System.Configuration;
 #else
 using Microsoft.Extensions.Configuration;
@@ -14,7 +14,7 @@ namespace Serenity.Configuration
 
     public class AppSettingsJsonConfigRepository : IConfigurationRepository
     {
-#if PORTABLE
+#if COREFX
         public static IConfigurationRoot Configuration { get; private set; }
 #endif
 
@@ -29,7 +29,7 @@ namespace Serenity.Configuration
             {
                 var keyAttr = settingType.GetCustomAttribute<SettingKeyAttribute>();
                 var key = keyAttr == null ? settingType.Name : keyAttr.Value;
-#if PORTABLE
+#if COREFX
                 var section = Configuration.GetSection("AppSettings");
                 var setting = section[key];
 #else

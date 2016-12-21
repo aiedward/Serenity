@@ -1,9 +1,13 @@
 ﻿using Serenity.Data;
 using System;
 using System.Linq;
+#if COREFX
+using Microsoft.AspNetCore.Authorization;
+#else
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+#endif
 
 namespace Serenity.Web
 {

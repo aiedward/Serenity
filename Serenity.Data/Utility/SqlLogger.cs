@@ -6,7 +6,7 @@ using Serenity.Data;
 using System;
 using System.Collections.Generic;
 using System.Threading;
-#if PORTABLE
+#if COREFX
 using Dapper;
 #endif
 namespace Serenity.Logging

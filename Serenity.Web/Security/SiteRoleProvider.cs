@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !COREFX
+using System;
 using System.Collections.Specialized;
 using System.Web.Security;
 
@@ -77,3 +78,4 @@ namespace Serenity.Web.Providers
         }
     }
 }
+#endif
