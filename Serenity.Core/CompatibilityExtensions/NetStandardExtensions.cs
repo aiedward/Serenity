@@ -15,10 +15,15 @@ namespace System
             return type.GetTypeInfo().GetCustomAttribute<TAttribute>(inherit);
         }
 
-        public static TAttribute[] GetCustomAttributes<TAttribute>(this Type type, bool inherit = true)
+        public static Attribute[] GetCustomAttributes(this Type type, bool inherit = true)
+        {
+            return type.GetTypeInfo().GetCustomAttributes(inherit).ToArray();
+        }
+
+        public static IEnumerable<TAttribute> GetCustomAttributes<TAttribute>(this Type type, bool inherit = true)
              where TAttribute : System.Attribute
         {
-            return type.GetTypeInfo().GetCustomAttributes<TAttribute>(inherit).ToArray();
+            return type.GetTypeInfo().GetCustomAttributes<TAttribute>(inherit);
         }
 
         public static Attribute[] GetCustomAttributes(this Type type, Type attributeType, bool inherit = true)
@@ -59,11 +64,6 @@ namespace System
         public static bool GetIsGenericTypeDefinition(this Type type)
         {
             return type.GetTypeInfo().IsGenericTypeDefinition;
-        }
-
-        public static Type[] GetGenericArguments(this Type type)
-        {
-            return type.GetTypeInfo().GetGenericArguments();
         }
 
         public static bool IsSubclassOf(this Type type, Type other)
