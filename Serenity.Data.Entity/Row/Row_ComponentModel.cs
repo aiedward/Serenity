@@ -176,6 +176,7 @@ namespace Serenity.Data
             }
         }
 
+#if !PORTABLE
         string IDataErrorInfo.Error
         {
             get
@@ -199,6 +200,7 @@ namespace Serenity.Data
                 return String.Empty;
             }
         }
+#endif
 
         public PropertyDescriptorCollection GetPropertyDescriptors()
         {

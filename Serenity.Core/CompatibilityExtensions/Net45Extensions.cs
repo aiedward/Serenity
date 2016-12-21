@@ -18,6 +18,11 @@ namespace System
             return type.IsGenericType;
         }
 
+        public static bool GetIsAbstract(this Type type)
+        {
+            return type.IsAbstract;
+        }
+
         public static bool GetIsClass(this Type type)
         {
             return type.IsClass;

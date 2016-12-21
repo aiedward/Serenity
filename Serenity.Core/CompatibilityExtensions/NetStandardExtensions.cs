@@ -15,9 +15,20 @@ namespace System
             return type.GetTypeInfo().GetCustomAttribute<TAttribute>(inherit);
         }
 
+        public static TAttribute[] GetCustomAttributes<TAttribute>(this Type type, bool inherit = true)
+             where TAttribute : System.Attribute
+        {
+            return type.GetTypeInfo().GetCustomAttributes<TAttribute>(inherit).ToArray();
+        }
+
         public static Attribute[] GetCustomAttributes(this Type type, Type attributeType, bool inherit = true)
         {
             return type.GetTypeInfo().GetCustomAttributes(attributeType, inherit).ToArray();
+        }
+
+        public static bool GetIsAbstract(this Type type)
+        {
+            return type.GetTypeInfo().IsAbstract;
         }
 
         public static bool GetIsEnum(this Type type)

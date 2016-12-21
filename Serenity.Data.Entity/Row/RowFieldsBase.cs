@@ -381,14 +381,14 @@ namespace Serenity.Data
                             if (property.PropertyType != null &&
                                 field is IEnumTypeField)
                             {
-                                if (property.PropertyType.IsEnum)
+                                if (property.PropertyType.GetIsEnum())
                                 {
                                     (field as IEnumTypeField).EnumType = property.PropertyType;
                                 }
                                 else
                                 {
                                     var nullableType = Nullable.GetUnderlyingType(property.PropertyType);
-                                    if (nullableType != null && nullableType.IsEnum)
+                                    if (nullableType != null && nullableType.GetIsEnum())
                                         (field as IEnumTypeField).EnumType = nullableType;
                                 }
                             }
@@ -406,7 +406,7 @@ namespace Serenity.Data
                             field.PropertyName = property.Name;
                             this.byPropertyName[field.PropertyName] = field;
 
-                            field.CustomAttributes = property.GetCustomAttributes(false);
+                            field.CustomAttributes = property.GetCustomAttributes(false).ToArray();
                         }
                     }
                 }

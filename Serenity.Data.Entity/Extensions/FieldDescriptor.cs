@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.ComponentModel;
+using System.Reflection;
 
 namespace Serenity.Data
 {
@@ -47,7 +48,7 @@ namespace Serenity.Data
             var enumType = GetEnumType(_field);
 
             if (enumType != null &&
-                enumType.IsEnum)
+                enumType.GetIsEnum())
                 return Enum.ToObject(enumType, val);
 
             return val;
@@ -82,6 +83,7 @@ namespace Serenity.Data
         {
             get
             {
+#if !PORTABLE
                 if (typeof(IList).IsAssignableFrom(this.PropertyType))
                 {
                     Attribute[] array = new Attribute[base.Attributes.Count + 1];
@@ -89,6 +91,7 @@ namespace Serenity.Data
                     array[array.Length - 1] = new ListBindableAttribute(false);
                     return new AttributeCollection(array);
                 }
+#endif
                 return base.Attributes;
             }
         }
@@ -122,7 +125,7 @@ namespace Serenity.Data
             var fint32 = field as IEnumTypeField;
             if (fint32 != null &&
                 fint32.EnumType != null &&
-                fint32.EnumType.IsEnum)
+                fint32.EnumType.GetIsEnum())
             {
                 return fint32.EnumType;
             }
@@ -136,7 +139,7 @@ namespace Serenity.Data
             {
                 var enumType = GetEnumType(_field);
                 if (enumType != null &&
-                    enumType.IsEnum)
+                    enumType.GetIsEnum())
                     return enumType;
 
                 return _field.ValueType;                    
